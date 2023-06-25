@@ -1,0 +1,61 @@
+﻿<!--  HeapSort.xaml for HeapSort.xaml.cs
+      @author: CHANG WEI-LIN
+      @Last Modify: 4/9/2023
+      @About: This program is the main window of the Max Heap Sort Algorithms Test Application with C# WPF.
+    -->
+
+<Window x:Class="Lab3_SortTest_ChangWeilin.HeapSort" 
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:sys="clr-namespace:System;assembly=mscorlib" 
+        xmlns:local="clr-namespace:Lab3_SortTest_ChangWeilin" 
+        xmlns:oxy="http://oxyplot.org/wpf"
+        
+        mc:Ignorable="d" Title="堆排序 HeapSort" Height="450" Width="800"
+        HorizontalAlignment="Center" VerticalAlignment="Center"
+        MaxWidth="800" MaxHeight="450" FontSize="16" ResizeMode="NoResize" 
+        WindowStartupLocation="CenterOwner" Icon="/heapsorticon.jpg" 
+        Background="#FFD4D4D4">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <Button x:Name="btnReadFile" Content="Read File" Width="100" Height="40" Margin="10" Click="ReadFile_Click"/>
+            <ComboBox x:Name="cbDataSelection" Width="150" Height="40" Margin="10" SelectionChanged="DataSelectionChanged">
+                <ComboBoxItem Content="Read 10 data"/>
+                <ComboBoxItem Content="Read 100 data"/>
+                <ComboBoxItem Content="Read 1,000 data"/>
+                <ComboBoxItem Content="Read 10,000 data"/>
+                <ComboBoxItem Content="Read 100,000 data"/>
+                <ComboBoxItem Content="Read 1,000,000 data"/>
+                <ComboBoxItem Content="Read all data"/>
+            </ComboBox>
+            <Button x:Name="btnStart" Content="Start" Width="100" Height="40" Margin="10" Click="Start_Click"/>
+            <TextBlock x:Name="txtInformation" Width="285" TextWrapping="Wrap" Margin="10"/>
+        </StackPanel>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="400*"/>
+                <ColumnDefinition Width="70*"/>
+                <ColumnDefinition Width="330*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox x:Name="txtData" Grid.Column="2" HorizontalScrollBarVisibility="Auto" 
+                     VerticalScrollBarVisibility="Auto" AcceptsReturn="True" IsReadOnly="True" Margin="30,10,12,12" TextChanged="TxtData_TextChanged" TextWrapping="Wrap" Text="堆排序（Heap Sort）是一种基于比较的排序算法，它利用了特定的数据结构——二叉堆来实现排序。堆排序可以分为两个主要步骤：&#xA;&#xA;（1）建堆（Heapify）：将无序数组构建成一个最大堆或最小堆。在最大堆中，每个父节点的值都大于或等于其子节点的值；在最小堆中，每个父节点的值都小于或等于其子节点的值。建堆过程的时间复杂度为 O(n)。&#xA;&#xA;（2）堆排序：从堆顶元素开始，将堆顶元素（最大堆的最大值或最小堆的最小值）与堆的最后一个元素互换。然后从堆中移除最后一个元素，这样该元素已经进入已排序区间。接下来，调整剩余堆的结构，使其重新满足最大堆或最小堆的性质。重复该过程，直到堆中仅剩一个元素为止。堆排序的时间复杂度为 O(n log n)。&#xD;&#xA;&#xD;&#xA;堆排序的优点是具有较好的时间复杂度（O(n log n)），并且是原地排序算法，不需要额外的存储空间。&#xD;&#xA;&#xD;&#xA;然而，由于堆排序的不稳定性，它在某些情况下可能不是最佳选择。不稳定性意味着具有相等键值的元素在排序后可能改变它们之间的相对顺序。" Grid.ColumnSpan="3"/>
+            <oxy:PlotView HorizontalAlignment="Left" VerticalAlignment="Center" 
+                          x:Name="plotView" MouseMove="PlotView_MouseMove" 
+                          Height="340" Width="450" Grid.ColumnSpan="2" Margin="10,0,0,0"/>
+
+            <Image Source="/shamrock.png" Margin="240,-55,10,345" Grid.Column="2" />
+        </Grid>
+    </Grid>
+</Window>
+
+<!-- Program Over -->
